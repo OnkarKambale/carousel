@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dynamic Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(-45deg, #1e3c72, #2a5298, #42275a, #734b6d);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
+            color: #fff;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .main-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 20px;
+            margin-top: 50px;
+            padding: 35px;
+            color: #fff;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+        }
+
+        h1 {
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .badge-tech {
+            background: #00e5ff;
+            color: #000;
+            margin: 5px;
+            font-size: 0.85rem;
+        }
+
+        .carousel-item img {
+            height: 420px;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .carousel-item img {
+                height: 250px;
+            }
+        }
+
+        .btn-custom {
+            margin: 6px;
+            min-width: 150px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            margin-top: 40px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="main-card text-center">
+
+        <!-- Name & PRN -->
+        <h1>Onkar Kambale</h1>
+        <h5>PRN: <strong>1012412140</strong></h5>
+
+        <!-- Tech Tags -->
+        <div class="mt-2 mb-3">
+            <span class="badge badge-tech">HTML</span>
+            <span class="badge badge-tech">CSS</span>
+            <span class="badge badge-tech">Bootstrap</span>
+            <span class="badge badge-tech">JavaScript</span>
+            <span class="badge badge-tech">Cloud Ready</span>
+        </div>
+
+        <!-- Dynamic Greeting -->
+        <p class="mt-3">
+            <strong><span id="greeting"></span></strong><br>
+            ⏱ Current Time: <strong><span id="time"></span></strong>
+        </p>
+
+        <!-- Buttons -->
+        <div class="mb-4">
+            <button class="btn btn-outline-light btn-custom">
+                <i class="bi bi-house-door"></i> Home
+            </button>
+            <button class="btn btn-outline-info btn-custom">
+                <i class="bi bi-images"></i> Gallery
+            </button>
+            <button class="btn btn-outline-warning btn-custom">
+                <i class="bi bi-person-badge"></i> About
+            </button>
+            <button class="btn btn-outline-danger btn-custom">
+                <i class="bi bi-envelope"></i> Contact
+            </button>
+        </div>
+
+        <!-- Slideshow -->
+        <div id="photoCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2500">
+            <div class="carousel-inner">
+
+                <div class="carousel-item active">
+                    <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470" class="d-block w-100">
+                </div>
+
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" class="d-block w-100">
+                </div>
+
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d" class="d-block w-100">
+                </div>
+
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb" class="d-block w-100">
+                </div>
+
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1503264116251-35a269479413" class="d-block w-100">
+                </div>
+
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba" class="d-block w-100">
+                </div>
+
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#photoCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+
+            <button class="carousel-control-next" type="button" data-bs-target="#photoCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<footer>
+    © 2026 | Dynamic Website | Designed by Onkar Kambale 🚀
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Dynamic Time & Greeting -->
+<script>
+    function updateTime() {
+        const now = new Date();
+        document.getElementById("time").innerHTML = now.toLocaleString();
+
+        const hour = now.getHours();
+        let greeting;
+
+        if (hour < 12) greeting = "Good Morning ☀️";
+        else if (hour < 17) greeting = "Good Afternoon 🌤️";
+        else if (hour < 21) greeting = "Good Evening 🌆";
+        else greeting = "Good Night 🌙";
+
+        document.getElementById("greeting").innerHTML = greeting;
+    }
+
+    updateTime();
+    setInterval(updateTime, 1000);
+</script>
+
+</body>
+</html>
